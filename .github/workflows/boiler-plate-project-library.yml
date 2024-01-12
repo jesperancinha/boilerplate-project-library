@@ -1,0 +1,45 @@
+name: Build boilerplate-project-library
+
+on:
+  push:
+    branches: [ master ]
+  pull_request_target:
+    types:
+      - closed
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Set up JDK 17
+      uses: actions/setup-java@v3
+      with:
+        java-version: '17'
+        distribution: 'temurin'
+
+    - name: Install Jest Image Train Filters Web
+      run: cd image-train-filters-fe && yarn && yarn add jest --dev
+
+    - name: Node Coverage
+      run: cd image-train-filters-fe && npm run coverage
+
+    - name: Run tests
+      run: sbt test
+
+    - name: Run Build and Coverage
+      run: make coverage
+      env:
+         COVERALLS_REPO_TOKEN: ${{ secrets.COVERALLS_REPO_TOKEN }}
+         CODACY_PROJECT_TOKEN: ${{ secrets.CODACY_PROJECT_TOKEN }}
+         CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
+
+    - name: Make assembly
+      run: sbt assembly
+
+    - name: NPM Snyk Security Check
+      run: make sec-check-npm
+      env:
+         SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}

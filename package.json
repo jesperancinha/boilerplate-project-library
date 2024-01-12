@@ -10,30 +10,18 @@
     "snyk-protect": "snyk-protect"
   },
   "dependencies": {
+    "@snyk/protect": "latest",
     "body-parser": "^1.20.2",
-    "chai": "^3.5.0",
+    "caniuse-lite": "^1.0.30001576",
+    "chai": "^5.0.0",
     "chai-http": "^4.4.0",
-    "cors": "^2.8.1",
-<<<<<<< HEAD
-    "express": "^4.17.3",
-    "helmet": "^3.23.3",
-=======
+    "cors": "^2.8.5",
     "express": "^4.18.2",
-    "helmet": "^3.21.1",
->>>>>>> gomix
-    "mocha": "^10.1.0",
-<<<<<<< HEAD
-    "mongodb": "^3.7.4",
-    "mongoose": "^6.12.0",
-=======
-    "mongodb": "^3.1.13",
-    "mongoose": "^6.12.2",
->>>>>>> gomix
-    "zombie": "^6.1.4",
-    "@snyk/protect": "latest"
-  },
-  "engines": {
-    "node": "4.4.3"
+    "helmet": "^7.1.0",
+    "mocha": "^10.2.0",
+    "mongodb": "^6.3.0",
+    "mongoose": "^8.0.4",
+    "zombie": "^6.1.4"
   },
   "repository": {
     "type": "git",
