@@ -1,6 +1,6 @@
 b: build
 build: build-npm
-build-npm: before build-cypress
+build-npm:
 	yarn && npm run build
 audit:
 	npm audit fix && yarn
