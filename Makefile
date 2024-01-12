@@ -1,7 +1,7 @@
 b: build
 build: build-npm
 build-npm:
-	yarn && npm run build
+	yarn && npm run test
 audit:
 	npm audit fix && yarn
 update-snyk:
